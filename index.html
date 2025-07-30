@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Colouring Book - Free Download</title>
+    <title>Hadi's Coloring Books Collection</title>
     <style>
         * {
             margin: 0;
@@ -13,167 +13,209 @@
 
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
+            margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             padding: 40px;
             text-align: center;
-            margin: 20px;
+            color: #333;
         }
 
-        h1 {
-            color: #ff6b6b;
-            font-size: 3em;
+        .header h1 {
+            font-size: 3.5em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: #ff6b6b;
         }
 
-        .subtitle {
+        .header p {
+            font-size: 1.3em;
             color: #4ecdc4;
-            font-size: 1.5em;
-            margin-bottom: 30px;
+            font-weight: bold;
         }
 
-        .description {
-            color: #555;
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 5px solid #ff6b6b;
-        }
-
-        .features {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-
-        .feature {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 10px;
-            min-width: 200px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .feature h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            font-size: 1.1em;
-        }
-
-        .download-section {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             padding: 40px;
+        }
+
+        .book-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 20px;
-            margin: 40px 0;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .book-card.anime {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .book-card.food {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .book-card.sports {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .book-card.people {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .book-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .book-card h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .book-card p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.4;
         }
 
         .download-btn {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            background: rgba(255,255,255,0.2);
             color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-            padding: 20px 40px;
-            border: none;
+            border: 2px solid white;
+            padding: 15px 30px;
             border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 15px rgba(255, 107, 107, 0.4);
         }
 
         .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(255, 107, 107, 0.6);
-        }
-
-        .emoji {
-            font-size: 2em;
-            margin: 0 10px;
+            background: white;
+            color: #333;
+            transform: scale(1.05);
         }
 
         .footer {
-            margin-top: 40px;
-            color: #666;
-            font-size: 1em;
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
         }
 
-        @media (max-width: 600px) {
-            h1 {
+        .footer h3 {
+            margin-bottom: 10px;
+            color: #ff6b6b;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
                 font-size: 2.5em;
             }
             
-            .features {
-                flex-direction: column;
-                align-items: center;
+            .books-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
             }
             
-            .feature {
-                width: 100%;
-                max-width: 300px;
+            .book-card {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎨 My Colouring Book! 🎨</h1>
-        <p class="subtitle">A Fun Collection of Pictures to Color</p>
-        
-        <div class="description">
-            <p>Welcome to my amazing coloring book! I've created lots of fun pictures for you to color and enjoy. This book is perfect for kids who love to be creative and have fun with colors!</p>
+        <div class="header">
+            <h1>🎨 Hadi's Coloring Books Collection 🎨</h1>
+            <p>Choose Your Favorite Theme and Start Coloring!</p>
         </div>
 
-        <div class="features">
-            <div class="feature">
-                <h3>🐱 Animals</h3>
-                <p>Color cute animals and pets!</p>
+        <div class="books-grid">
+            <div class="book-card anime">
+                <span class="book-icon">🎌</span>
+                <h3>Anime Coloring Book</h3>
+                <p>Amazing anime characters and manga-style artwork! Perfect for anime fans who love to color their favorite characters.</p>
+                <a href="anime-coloring-book.pdf" class="download-btn" download>
+                    📥 Download Anime Book
+                </a>
             </div>
-            <div class="feature">
-                <h3>🍎 Food</h3>
-                <p>Yummy foods to make colorful!</p>
-            </div>
-            <div class="feature">
-                <h3>⚽ Playing</h3>
-                <p>Fun games and activities!</p>
-            </div>
-        </div>
 
-        <div class="download-section">
-            <h2 style="color: #333; margin-bottom: 20px;">📥 Download Your Free Coloring Book!</h2>
-            <p style="color: #555; margin-bottom: 30px; font-size: 1.1em;">Click the button below to download the PDF and start coloring!</p>
-            
-            <a href="My colouring book!.pdf" class="download-btn" download>
-                <span class="emoji">📋</span>
-                Download PDF
-                <span class="emoji">🖍️</span>
-            </a>
+            <div class="book-card food">
+                <span class="book-icon">🍎</span>
+                <h3>Food Coloring Book</h3>
+                <p>Delicious foods from around the world! Color yummy treats, fruits, vegetables, and Pakistani dishes.</p>
+                <a href="food-coloring-book.pdf" class="download-btn" download>
+                    📥 Download Food Book
+                </a>
+            </div>
+
+            <div class="book-card sports">
+                <span class="book-icon">⚽</span>
+                <h3>Sports Coloring Book</h3>
+                <p>Action-packed sports scenes! Cricket, football, basketball, tennis and more exciting sports to color.</p>
+                <a href="sports-coloring-book.pdf" class="download-btn" download>
+                    📥 Download Sports Book
+                </a>
+            </div>
+
+            <div class="book-card people">
+                <span class="book-icon">👥</span>
+                <h3>People Coloring Book</h3>
+                <p>Faces, families, and characters from around the world! Learn about different cultures while you color.</p>
+                <a href="people-coloring-book.pdf" class="download-btn" download>
+                    📥 Download People Book
+                </a>
+            </div>
+
+            <div class="book-card original" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);">
+                <span class="book-icon">🎨</span>
+                <h3>My Original Mixed Book</h3>
+                <p>My very first coloring book! A fun mix of animals, food, and playing activities. This is where it all started!</p>
+                <a href="My colouring book!.pdf" class="download-btn" download>
+                    📥 Download Original Book
+                </a>
+            </div>
         </div>
 
         <div class="footer">
-            <p>🌟 Made with love for young artists everywhere! 🌟</p>
-            <p>Have fun coloring and being creative!</p>
+            <h3>🌟 About the Artist 🌟</h3>
+            <p>Hi! I'm Hadi, and I'm 10 years old!</p>
+            <p>I love creating coloring books for kids like me.</p>
+            <p>I use AI tools like Craiyon to help me make amazing artwork.</p>
+            <p>All my coloring books are free to download and print!</p>
+            <p><strong>Have fun coloring! 🖍️</strong></p>
         </div>
     </div>
 </body>
